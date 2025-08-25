@@ -1,20 +1,21 @@
-node{
-    git branch: 'main',  url:'https://github.com/mahmoudmarabeh/SimpleApi.git'
-    stage('build'){
-        try{
-        sh'echo "build stage"'
+pipeline{
+    agent any
+
+    stages{
+        stage('build'){
+            steps{
+                script{
+                    echo "BUILD IN PROGRESS"
+                }
+            }
         }
-        catch(Exception ex){
-            sh'echo "excption found "'
-            throw ex
-        }
-    }
-    stage('test'){
-        if (env.BRANCH_NAME == "feature"){
-            sh'echo "test stage"'
-        }
-        else{
-            sh'echo "skip test stage"'
+
+        stage('test'){
+            steps{
+                script{
+                    echo "TEST IN PROGRESS"
+                }
+            }
         }
     }
 }
